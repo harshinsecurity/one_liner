@@ -2,8 +2,6 @@
 
 Our main goal is to share tips from some well-known bughunters. Using recon methodology, we are able to find subdomains, apis, and tokens that are already exploitable, so we can report them. We wish to influence Onelinetips and explain the commands, for the better understanding of new hunters.
 
-## Join Us (Limited to 800 members)
-[![Telegram](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/KingOfTipsBugBounty)
 
 [![GitHub followers](https://img.shields.io/github/followers/bminossi.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/bminossi?tab=followers) 
 [![GitHub followers](https://img.shields.io/github/followers/OfJAAH.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/OfJAAH?tab=followers)
@@ -16,7 +14,7 @@ Our main goal is to share tips from some well-known bughunters. Using recon meth
 - [@TomNomNom](https://twitter.com/TomNomNom)
 - [@jeff_foley](https://twitter.com/@jeff_foley)
 - [@NahamSec](https://twitter.com/NahamSec)
-- [@j3ssiejjj](https://twitter.com/j3ssiejjj)
+
 
 
 ## Scripts that need to be installed
@@ -34,8 +32,6 @@ To run the project, you will need to install the following programs:
 
 
 ###  Search Asn Amass
-> @OFJAAAH
-> @zeroc00I
 
 - [Explaining command](https://bit.ly/2EMooDB)
 
@@ -46,8 +42,6 @@ amass intel -org paypal -max-dns-queries 2500 | awk -F, '{print $1}' ORS=',' | s
 ```
 
 ###  Using chaos search js
-> @OFJAAAH
-> @zeroc00I
 
 - [Explaining command](https://bit.ly/32vfRg7)
 
@@ -58,8 +52,6 @@ chaos -d att.com | httpx -silent | xargs -I@ -P20 sh -c 'gospider -a -s "@" -d 2
 ```
 
 ###  Search Subdomain using Gospider
-> @OFJAAAH
-> @zeroc00I
 
 - [Explaining command](https://bit.ly/2QtG9do)
 
@@ -68,8 +60,6 @@ gospider -d 0 -s "https://site.com" -c 5 -t 100 -d 5 --blacklist jpg,jpeg,gif,cs
 ```
 
 ###  Using gospider to chaos
-> @OFJAAAH
-> @zeroc00I
 
 - [Explaining command](https://bit.ly/2D4vW3W)
 
@@ -78,8 +68,6 @@ chaos -d paypal.com -bbq -filter-wildcard -http-url | xargs -I@ -P5 sh -c 'gospi
 ```
 
 ###  Using recon.dev and gospider crawler subdomains
-> @OFJAAAH
-> @zeroc00I
 
 - [Explaining command](https://bit.ly/32pPRDa)
 
@@ -88,8 +76,6 @@ curl "https://recon.dev/api/search?key=apiKEY&domain=paypal.com" |jq -r '.[].raw
 ```
 
 ###  PSQL - search subdomain using cert.sh
-> @OFJAAAH
-> @zeroc00I
 
 - [Explaining command](https://bit.ly/32rMA6e)
 
@@ -98,8 +84,6 @@ psql -A -F , -f querycrt -h http://crt.sh -p 5432 -U guest certwatch 2>/dev/null
 ```
 
 ###  Search subdomains using github and httpx
-> @OFJAAAH
-> @zeroc00I
 
 - [Github-search](https://github.com/gwen001/github-search) - Using python3 to search subdomains, httpx filter hosts by up status-code response (200)
 
@@ -108,8 +92,6 @@ psql -A -F , -f querycrt -h http://crt.sh -p 5432 -U guest certwatch 2>/dev/null
 ```
 
 ###  Search SQLINJECTION using qsreplace search syntax error
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3hxFWS2)
 
@@ -118,8 +100,6 @@ grep "="  .txt| qsreplace "' OR '1" | httpx -silent -store-response-dir output -
 ```
 
 ###  Search subdomains using jldc
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/2YBlEjm)
 
@@ -128,8 +108,6 @@ curl -s "https://jldc.me/anubis/subdomains/att.com" | grep -Po "((http|https):\/
 ```
 
 ###  Search subdomains in assetfinder using hakrawler spider to search links in content responses
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3hxRvZw)
 
@@ -138,8 +116,6 @@ assetfinder -subs-only http://tesla.com -silent | httpx -timeout 3 -threads 300 
 ```
 
 ###  Search subdomains in cert.sh
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/2QrvMXl)
 
@@ -148,8 +124,6 @@ curl -s "https://crt.sh/?q=%25.att.com&output=json" | jq -r '.[].name_value' | s
 ```
 
 ###  Search subdomains in cert.sh assetfinder to search in link /.git/HEAD
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3lhFcTH)
 
@@ -160,8 +134,6 @@ curl -s "https://crt.sh/?q=%25.tesla.com&output=json" | jq -r '.[].name_value' |
 curl -s "https://crt.sh/?q=%25.enjoei.com.br&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | httpx -silent -path /.git/HEAD -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew
 ```
 ###  Collect js files from hosts up by gospider
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3aWIwyI)
 
@@ -170,8 +142,6 @@ xargs -P 500 -a pay -I@ sh -c 'nc -w1 -z -v @ 443 2>/dev/null && echo @' | xargs
 ```
 
 ###  Subdomain search Bufferover resolving domain to httpx
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3lno9j0)
 
@@ -182,9 +152,6 @@ curl -s https://dns.bufferover.run/dns?q=.sony.com |jq -r .FDNS_A[] | sed -s 's/
 ###  Using gargs to gospider search with parallel proccess
 - [Gargs](https://github.com/brentp/gargs)
 
-> @OFJAAAH
-> @zeroc00I
-
 - [Explained comand](https://bit.ly/2EHj1FD)
 
 ```bash
@@ -192,8 +159,6 @@ httpx -ports 80,443,8009,8080,8081,8090,8180,8443 -l domain -timeout 5 -threads 
 ```
 
 ###  Injection xss using qsreplace to urls filter to gospider
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3joryw9)
 
@@ -202,8 +167,6 @@ gospider -S domain.txt -t 3 -c 100 |  tr " " "\n" | grep -v ".js" | grep "https:
 ```
 
 ###  Extract URL's to apk
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/2QzXwJr)
 
@@ -212,8 +175,6 @@ apktool d app.apk -o uberApk;grep -Phro "(https?://)[\w\.-/]+[\"'\`]" uberApk/ |
 ```
 
 ###  Chaos to Gospider
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3gFJbpB)
 
@@ -222,8 +183,7 @@ chaos -d att.com -o att -silent | httpx -silent | xargs -P100 -I@ gospider -c 30
 ```
 
 ###  Checking invalid certificate
-> @OFJAAAH
-> @zeroc00I
+
 - [Real script](https://bit.ly/2DhAwMo)
 - [Script King](https://bit.ly/34Z0kIH)
 
@@ -232,8 +192,6 @@ xargs -a domain -P1000 -I@ sh -c 'bash cert.sh @ 2> /dev/null' | grep "EXPIRED" 
 ```
 
 ###  Using shodan & Nuclei
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3jslKle)
 
@@ -242,8 +200,6 @@ shodan domain DOMAIN TO BOUNTY | awk '{print $3}' | httpx -silent | nuclei -t /n
 ```
 
 ###  Open Redirect test using gf.
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/3hL263x)
 
@@ -252,8 +208,6 @@ echo "domain" | waybackurls | httpx -silent -timeout 2 -threads 100 | gf redirec
 ```
 
 ###  Using shodan to jaeles "How did I find a critical today? well as i said it was very simple, using shodan and jaeles".
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/2QQfY0l)
 
@@ -261,8 +215,6 @@ echo "domain" | waybackurls | httpx -silent -timeout 2 -threads 100 | gf redirec
 shodan domain domain| awk '{print $3}'|  httpx -silent | anew | xargs -I@ jaeles scan -c 100 -s /jaeles-signatures/ -u @
 ```
 ###  Using Chaos to jaeles "How did I find a critical today?.
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/2YXiK8N)
 
@@ -271,9 +223,6 @@ chaos -d domain | httpx -silent | anew | xargs -I@ jaeles scan -c 100 -s /jaeles
 ```
 
 ###  Using shodan to jaeles
-> @OFJAAAH
-> @zeroc00I
-
 - [Explained comand](https://bit.ly/2Dkmycu)
 
 ```bash
@@ -281,8 +230,6 @@ domain="domaintotest";shodan domain $domain | awk -v domain="$domain" '{print $1
 ```
 
 ###  Search to files using assetfinder and ffuf
-> @OFJAAAH
-> @zeroc00I
 
 - [Explained comand](https://bit.ly/2Go3Ba4)
 
