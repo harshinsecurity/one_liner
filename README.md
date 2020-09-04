@@ -17,7 +17,6 @@ The main goal is to share tips from some well-known bughunters. Using recon meth
 - [@Jhaddix](https://twitter.com/Jhaddix)
 - [@pdiscoveryio](https://twitter.com/pdiscoveryio)
 - [@TomNomNom](https://twitter.com/TomNomNom)
-- [@jeff_foley](https://twitter.com/@jeff_foley)
 - [@NahamSec](https://twitter.com/NahamSec)
 
 
