@@ -1,6 +1,6 @@
-## 👑 What is KingOfOneLineTips Project ? 👑
+## What is One_Liner Project ?
 
-Our main goal is to share tips from some well-known bughunters. Using recon methodology, we are able to find subdomains, apis, and tokens that are already exploitable, so we can report them. We wish to influence Onelinetips and explain the commands, for the better understanding of new hunters.
+The main goal is to share tips from some well-known bughunters. Using recon methodology, we are able to find subdomains, apis, and tokens that are already exploitable, so we can report them. We wish to influence Onelinetips and explain the commands, for the better understanding of new hunters.
 
 <p align="center">
     <a href="https://twitter.com/xploitprotocol">
