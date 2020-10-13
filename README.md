@@ -87,7 +87,7 @@ curl "https://recon.dev/api/search?key=apiKEY&domain=paypal.com" |jq -r '.[].raw
 psql -A -F , -f querycrt -h http://crt.sh -p 5432 -U guest certwatch 2>/dev/null | tr ', ' '\n' | grep twitch | anew'
 ```
 
-###  Search subdomains using Github and httpx
+###  Search subdomains using github and httpx
 
 - [Github-search](https://github.com/gwen001/github-search) - Using python3 to search subdomains, httpx filter hosts by up status-code response (200)
 
