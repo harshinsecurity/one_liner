@@ -1,6 +1,6 @@
 ## What is One_liner Project ?
 
-The main goal is to share tips from some well-known bughunters. Using recon methodology, we are able to find subdomains, apis, and tokens that are already exploitable, so we can report them. We wish to influence Onelinetips and explain the commands, for the better understanding of new hunters.
+The main goal is to share tips from some well-known bug hunters. Using recon methodology, we can find subdomains, APIs, and tokens that are already exploitable, so we can report them. We wish to influence Onelinetips and explain the commands, for the better understanding of new hunters.
 
 <p align="center">
     <a href="https://twitter.com/xploitprotocol">
@@ -39,7 +39,7 @@ To run the project, you will need to install the following programs:
 
 - [Explaining command](https://bit.ly/2EMooDB)
 
-Amass intel will search the organization "paypal" from a database of ASNs at a faster-than-default rate. It will then take these ASN numbers and scan the complete ASN/IP space for all tld's in that IP space (paypal.com, paypal.co.id, paypal.me).
+Amass intel will search the organization "PayPal" from a database of ASNs at a faster-than-default rate. It will then take these ASN numbers and scan the complete ASN/IP space for all TLD's in that IP space (paypal.com, paypal.co.id, paypal.me).
 
 ```bash
 amass intel -org paypal -max-dns-queries 2500 | awk -F, '{print $1}' ORS=',' | sed 's/,$//' | xargs -P3 -I@ -d ',' amass intel -asn @ -max-dns-queries 2500''
