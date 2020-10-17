@@ -55,7 +55,7 @@ Choas is an API by Project Discovery that discovers subdomains. Here we are quer
 chaos -d att.com | httpx -silent | xargs -I@ -P20 sh -c 'gospider -a -s "@" -d 2' | grep -Eo "(http|https)://[^/"].*.js+" | sed "s#]
 ```
 
-###  Search Subdomain using Gospider
+### Search Subdomain using Gospider
 
 - [Explaining command](https://bit.ly/2QtG9do)
 
@@ -63,7 +63,7 @@ chaos -d att.com | httpx -silent | xargs -I@ -P20 sh -c 'gospider -a -s "@" -d 2
 gospider -d 0 -s "https://site.com" -c 5 -t 100 -d 5 --blacklist jpg,jpeg,gif,css,tif,tiff,png,ttf,woff,woff2,ico,pdf,svg,txt | grep -Eo '(http|https)://[^/"]+' | anew
 ```
 
-###  Using gospider to chaos
+### Using gospider to chaos
 
 - [Explaining command](https://bit.ly/2D4vW3W)
 
@@ -71,7 +71,7 @@ gospider -d 0 -s "https://site.com" -c 5 -t 100 -d 5 --blacklist jpg,jpeg,gif,cs
 chaos -d paypal.com -bbq -filter-wildcard -http-url | xargs -I@ -P5 sh -c 'gospider -a -s "@" -d 3'
 ```
 
-###  Using recon.dev and gospider crawler subdomains
+### Using recon.dev and gospider crawler subdomains
 
 - [Explaining command](https://bit.ly/32pPRDa)
 
@@ -79,7 +79,7 @@ chaos -d paypal.com -bbq -filter-wildcard -http-url | xargs -I@ -P5 sh -c 'gospi
 curl "https://recon.dev/api/search?key=apiKEY&domain=paypal.com" |jq -r '.[].rawDomains[]' | sed 's/ //g' | anew |httpx -silent | xargs -I@ gospider -d 0 -s @ -c 5 -t 100 -d 5 --blacklist jpg,jpeg,gif,css,tif,tiff,png,ttf,woff,woff2,ico,pdf,svg,txt | grep -Eo '(http|https)://[^/"]+' | anew'
 ```
 
-###  PSQL - search subdomain using cert.sh
+### PSQL - search subdomain using cert.sh
 
 - [Explaining command](https://bit.ly/32rMA6e)
 
@@ -87,7 +87,7 @@ curl "https://recon.dev/api/search?key=apiKEY&domain=paypal.com" |jq -r '.[].raw
 psql -A -F , -f querycrt -h http://crt.sh -p 5432 -U guest certwatch 2>/dev/null | tr ', ' '\n' | grep twitch | anew'
 ```
 
-###  Search subdomains using Github and httpx
+### Search subdomains using Github and httpx
 
 - [Github-search](https://github.com/gwen001/github-search) - Using python3 to search subdomains, httpx filter hosts by up status-code response (200)
 
@@ -95,7 +95,7 @@ psql -A -F , -f querycrt -h http://crt.sh -p 5432 -U guest certwatch 2>/dev/null
 ./github-subdomains.py -t APYKEYGITHUB -d domaintosearch | httpx --title
 ```
 
-###  Search SQLINJECTION using qsreplace search syntax error
+### Search SQLINJECTION using qsreplace search syntax error
 
 - [Explained comand](https://bit.ly/3hxFWS2)
 
@@ -103,7 +103,7 @@ psql -A -F , -f querycrt -h http://crt.sh -p 5432 -U guest certwatch 2>/dev/null
 grep "="  .txt| qsreplace "' OR '1" | httpx -silent -store-response-dir output -threads 100 | grep -q -rn "syntax\|mysql" output 2>/dev/null && \printf "TARGET \033[0;32mCould Be Exploitable\e[m\n" || printf "TARGET \033[0;31mNot Vulnerable\e[m\n"
 ```
 
-###  Search subdomains using jldc
+### Search subdomains using jldc
 
 - [Explained comand](https://bit.ly/2YBlEjm)
 
@@ -111,7 +111,7 @@ grep "="  .txt| qsreplace "' OR '1" | httpx -silent -store-response-dir output -
 curl -s "https://jldc.me/anubis/subdomains/att.com" | grep -Po "((http|https):\/\/)?(([\w.-]*)\.([\w]*)\.([A-z]))\w+" | anew
 ```
 
-###  Search subdomains in assetfinder using hakrawler spider to search links in content responses
+### Search subdomains in assetfinder using hakrawler spider to search links in content responses
 
 - [Explained comand](https://bit.ly/3hxRvZw)
 
@@ -119,7 +119,7 @@ curl -s "https://jldc.me/anubis/subdomains/att.com" | grep -Po "((http|https):\/
 assetfinder -subs-only http://tesla.com -silent | httpx -timeout 3 -threads 300 --follow-redirects -silent | xargs -I% -P10 sh -c 'hakrawler -plain -linkfinder -depth 5 -url %' | grep "tesla"
 ```
 
-###  Search subdomains in cert.sh
+### Search subdomains in cert.sh
 
 - [Explained comand](https://bit.ly/2QrvMXl)
 
@@ -127,7 +127,7 @@ assetfinder -subs-only http://tesla.com -silent | httpx -timeout 3 -threads 300 
 curl -s "https://crt.sh/?q=%25.att.com&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | httpx -title -silent | anew
 ```
 
-###  Search subdomains in cert.sh assetfinder to search in link /.git/HEAD
+### Search subdomains in cert.sh assetfinder to search in link /.git/HEAD
 
 - [Explained comand](https://bit.ly/3lhFcTH)
 
@@ -137,7 +137,7 @@ curl -s "https://crt.sh/?q=%25.tesla.com&output=json" | jq -r '.[].name_value' |
 ```bash
 curl -s "https://crt.sh/?q=%25.enjoei.com.br&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | httpx -silent -path /.git/HEAD -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew
 ```
-###  Collect js files from hosts up by gospider
+### Collect js files from hosts up by gospider
 
 - [Explained comand](https://bit.ly/3aWIwyI)
 
@@ -145,7 +145,7 @@ curl -s "https://crt.sh/?q=%25.enjoei.com.br&output=json" | jq -r '.[].name_valu
 xargs -P 500 -a pay -I@ sh -c 'nc -w1 -z -v @ 443 2>/dev/null && echo @' | xargs -I@ -P10 sh -c 'gospider -a -s "https://@" -d 2 | grep -Eo "(http|https)://[^/\"].*\.js+" | sed "s#\] \- #\n#g" | anew'
 ```
 
-###  Subdomain search Bufferover resolving domain to httpx
+### Subdomain search Bufferover resolving domain to httpx
 
 - [Explained comand](https://bit.ly/3lno9j0)
 
@@ -153,7 +153,7 @@ xargs -P 500 -a pay -I@ sh -c 'nc -w1 -z -v @ 443 2>/dev/null && echo @' | xargs
 curl -s https://dns.bufferover.run/dns?q=.sony.com |jq -r .FDNS_A[] | sed -s 's/,/\n/g' | httpx -silent | anew
 ```
 
-###  Using gargs to gospider search with parallel proccess
+### Using gargs to gospider search with parallel proccess
 - [Gargs](https://github.com/brentp/gargs)
 
 - [Explained comand](https://bit.ly/2EHj1FD)
@@ -162,7 +162,7 @@ curl -s https://dns.bufferover.run/dns?q=.sony.com |jq -r .FDNS_A[] | sed -s 's/
 httpx -ports 80,443,8009,8080,8081,8090,8180,8443 -l domain -timeout 5 -threads 200 --follow-redirects -silent | gargs -p 3 'gospider -m 5 --blacklist pdf -t 2 -c 300 -d 5 -a -s {}' | anew stepOne
 ```
 
-###  Injection xss using qsreplace to urls filter to gospider
+### Injection xss using qsreplace to urls filter to gospider
 
 - [Explained comand](https://bit.ly/3joryw9)
 
@@ -170,7 +170,7 @@ httpx -ports 80,443,8009,8080,8081,8090,8180,8443 -l domain -timeout 5 -threads 
 gospider -S domain.txt -t 3 -c 100 |  tr " " "\n" | grep -v ".js" | grep "https://" | grep "=" | qsreplace '%22><svg%20onload=confirm(1);>'
 ```
 
-###  Extract URL's to apk
+### Extract URL's to apk
 
 - [Explained comand](https://bit.ly/2QzXwJr)
 
@@ -178,7 +178,7 @@ gospider -S domain.txt -t 3 -c 100 |  tr " " "\n" | grep -v ".js" | grep "https:
 apktool d app.apk -o uberApk;grep -Phro "(https?://)[\w\.-/]+[\"'\`]" uberApk/ | sed 's#"##g' | anew | grep -v "w3\|android\|github\|schemas.android\|google\|goo.gl"
 ```
 
-###  Chaos to Gospider
+### Chaos to Gospider
 
 - [Explained comand](https://bit.ly/3gFJbpB)
 
@@ -186,7 +186,7 @@ apktool d app.apk -o uberApk;grep -Phro "(https?://)[\w\.-/]+[\"'\`]" uberApk/ |
 chaos -d att.com -o att -silent | httpx -silent | xargs -P100 -I@ gospider -c 30 -t 15 -d 4 -a -H "x-forwarded-for: 127.0.0.1" -H "User-Agent: Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1" -s @
 ```
 
-###  Checking invalid certificate
+### Checking invalid certificate
 
 - [Real script](https://bit.ly/2DhAwMo)
 - [Script King](https://bit.ly/34Z0kIH)
@@ -195,7 +195,7 @@ chaos -d att.com -o att -silent | httpx -silent | xargs -P100 -I@ gospider -c 30
 xargs -a domain -P1000 -I@ sh -c 'bash cert.sh @ 2> /dev/null' | grep "EXPIRED" | awk '/domain/{print $5}' | httpx
 ```
 
-###  Using shodan & Nuclei
+### Using shodan & Nuclei
 
 - [Explained comand](https://bit.ly/3jslKle)
 
@@ -203,7 +203,7 @@ xargs -a domain -P1000 -I@ sh -c 'bash cert.sh @ 2> /dev/null' | grep "EXPIRED" 
 shodan domain DOMAIN TO BOUNTY | awk '{print $3}' | httpx -silent | nuclei -t /nuclei-templates/
 ```
 
-###  Open Redirect test using gf.
+### Open Redirect test using gf.
 
 - [Explained comand](https://bit.ly/3hL263x)
 
@@ -211,14 +211,14 @@ shodan domain DOMAIN TO BOUNTY | awk '{print $3}' | httpx -silent | nuclei -t /n
 echo "domain" | waybackurls | httpx -silent -timeout 2 -threads 100 | gf redirect | anew
 ```
 
-###  Using shodan to jaeles "How did I find a critical today? well as i said it was very simple, using shodan and jaeles".
+### Using shodan to jaeles "How did I find a critical today? well as i said it was very simple, using shodan and jaeles".
 
 - [Explained comand](https://bit.ly/2QQfY0l)
 
 ```bash
 shodan domain domain| awk '{print $3}'|  httpx -silent | anew | xargs -I@ jaeles scan -c 100 -s /jaeles-signatures/ -u @
 ```
-###  Using Chaos to jaeles "How did I find a critical today?.
+### Using Chaos to jaeles "How did I find a critical today?.
 
 - [Explained comand](https://bit.ly/2YXiK8N)
 
@@ -226,14 +226,14 @@ shodan domain domain| awk '{print $3}'|  httpx -silent | anew | xargs -I@ jaeles
 chaos -d domain | httpx -silent | anew | xargs -I@ jaeles scan -c 100 -s /jaeles-signatures/ -u @ 
 ```
 
-###  Using shodan to jaeles
+### Using shodan to jaeles
 - [Explained comand](https://bit.ly/2Dkmycu)
 
 ```bash
 domain="domaintotest";shodan domain $domain | awk -v domain="$domain" '{print $1"."domain}'| httpx -threads 300 | anew shodanHostsUp | xargs -I@ -P3 sh -c 'jaeles -c 300 scan -s jaeles-signatures/ -u @'| anew JaelesShodanHosts 
 ```
 
-###  Search to files using assetfinder and ffuf
+### Search to files using assetfinder and ffuf
 
 - [Explained comand](https://bit.ly/2Go3Ba4)
 
