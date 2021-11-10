@@ -3,10 +3,10 @@
 The main goal is to share tips from some well-known bug hunters. Using recon methodology, we can find subdomains, APIs, and tokens that are already exploitable, so we can report them. We wish to influence Onelinetips and explain the commands, for the better understanding of new hunters.
 
 <p align="center">
-    <a href="https://twitter.com/xploitprotocol">
+    <a href="https://twitter.com/harshinsecurity">
       <img src="https://img.shields.io/twitter/follow/xploitprotocol?style=social">
   </a>
-  <a href="https://github.com/harsh-kk?tab=followers">
+  <a href="https://github.com/harshinsecurity?tab=followers">
       <img alt="GitHub followers" src="https://img.shields.io/github/followers/harsh-kk?label=Follow&style=social">
   </a>
 </p>
