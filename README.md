@@ -4,10 +4,10 @@ The main goal is to share tips from some well-known bug hunters. Using recon met
 
 <p align="center">
     <a href="https://twitter.com/harshinsecurity">
-      <img src="https://img.shields.io/twitter/follow/xploitprotocol?style=social">
+      <img src="https://img.shields.io/twitter/follow/harshinsecurity?style=social">
   </a>
   <a href="https://github.com/harshinsecurity?tab=followers">
-      <img alt="GitHub followers" src="https://img.shields.io/github/followers/harsh-kk?label=Follow&style=social">
+      <img alt="GitHub followers" src="https://img.shields.io/github/followers/harshinsecurity?label=Follow&style=social">
   </a>
 </p>
 
